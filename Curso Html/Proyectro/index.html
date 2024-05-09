@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Login y Registro</title>
+  <link rel="stylesheet" href="styles.css">
+  
+</head>
+
+
+<body>
+ 
+
+<!-- Formulario de Inicio de Sesión -->
+<div id="login">
+  <h2>Iniciar Sesión</h2>
+  <input type="text" id="Clave Electoral" placeholder="Clave Electoral" required>
+  <input type="password" id="password" placeholder="Contraseña" required>
+  <button onclick="login()">Iniciar Sesión</button>
+</div>
+
+<!-- Enlace a la página de registro -->
+<a href="registro.html">
+  <button>Registrarse</button>
+</a>
+
+<!-- Formulario de Registro (oculto inicialmente) -->
+<div id="registro" style="display:none;">
+  <h2>Registro</h2>
+  <input type="Text" id="Nombre" placeholder="Nombre " required>
+  <input type="Text" id="Apellido" placeholder="Apellido " required>
+  <input type="text" id="Clave Electoral" placeholder="Clave Electoral" required>
+  <input type="password" id="newPassword" placeholder="Contraseña" required>
+  <input type="email" id="email" placeholder="Correo Electrónico" required>
+</div>
+
+<script>
+// Datos de usuario simulados para el ejemplo
+var usuarios = [
+  { username: 'usuario1', password: 'contraseña123', email: 'usuario1@example.com', userNumber: '12345', walletAddress: '0x1234567890abcdef' }
+];
+
+function login() {
+  var claveElectoral = document.getElementById('Clave Electoral').value;
+  var password = document.getElementById('password').value;
+
+  var usuarioValido = usuarios.find(u => u.username === claveElectoral && u.password === password);
+  
+  if(usuarioValido) {
+    // Redirigir al usuario a la página de votación
+    window.location.href = 'votacion.html';
+  } else {
+    alert('Usuario o contraseña incorrectos');
+  }
+}
+
+function mostrarRegistro() {
+  // Mostrar el formulario de registro
+  document.getElementById('registro').style.display = 'block';
+}
+
+function registrar() {
+  var newUsername = document.getElementById('Nombre').value;
+  var newPassword = document.getElementById('newPassword').value;
+  var email = document.getElementById('email').value;
+  var claveElectoral = document.getElementById('Clave Electoral').value;
+
+  // Aquí deberías agregar validaciones y luego almacenar el nuevo usuario
+  usuarios.push({ username: newUsername, password: newPassword, email, claveElectoral });
+  alert('Usuario registrado exitosamente');
+  
+  // Opcional: Ocultar el formulario de registro después del registro
+  // document.getElementById('registro').style.display = 'none';
+}
+</script>
+
+</body>
+</html>

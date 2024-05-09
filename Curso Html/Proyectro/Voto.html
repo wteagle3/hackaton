@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Votación</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-image: url('imagen.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+    .header, .footer {
+      flex: 0 1 auto;
+      padding: 10px;
+      background: #f0f0f0;
+    }
+    .main {
+      flex: 1 1 auto;
+      padding: 20px;
+      background: #fff;
+    }
+    .candidates {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+    .candidate {
+      border: 1px solid #ddd;
+      padding: 10px;
+      width: 30%;
+      text-align: center;
+    }
+    .candidate img {
+      max-width: 100%; /* Asegura que todas las imágenes tengan el mismo ancho */
+      height: auto; /* Mantiene la proporción de aspecto */
+    }
+    .vote-button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+      display: block;
+      margin: 20px auto;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="header">
+    <button class="button" onclick="salir()">Salir</button>
+    <button class="button">Votar</button>
+  </div>
+  
+  <div class="main">
+    <form id="votingForm" class="candidates">
+      <div class="candidate">
+        <img src="Imagenes/Maynez.jpg" alt="Foto del candidato 1">
+        <p>Partido político 1</p>
+        <input type="radio" id="candidato1" name="candidato" value="Maynez">
+        <label for="candidato1">Seleccionar</label>
+      </div>
+      <div class="candidate">
+        <img src="Imagenes/Sheimbaun.jpg" alt="Foto del candidato 2">
+        <p>Partido político 2</p>
+        <input type="radio" id="candidato2" name="candidato" value="Sheimbaun">
+        <label for="candidato2">Seleccionar</label>
+      </div>
+      <div class="candidate">
+        <img src="Imagenes/Xochil.jpg" alt="Foto del candidato 3">
+        <p>Partido político 3</p>
+        <input type="radio" id="candidato3" name="candidato" value="Xochil">
+        <label for="candidato3">Seleccionar</label>
+      </div>
+    </form>
+    <button class="vote-button" onclick="mostrarMensajeVoto()">Votar</button>
+  </div>
+
+  <div class="footer">
+    <!-- Aquí puedes agregar más contenido si lo deseas -->
+  </div>
+  
+  <script>
+    function mostrarMensajeVoto() {
+      const candidatoSeleccionado = document.querySelector('input[name="candidato"]:checked').value;
+      alert(`¡Has votado por ${candidatoSeleccionado}!`);
+    }
+
+    function salir() {
+      // Redirige a index.html
+      window.location.href = 'index.html';
+    }
+  </script>
+</div>
+
+</body>
+</html>
+
